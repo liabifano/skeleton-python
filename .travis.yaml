@@ -1,0 +1,22 @@
+sudo: required
+notifications:
+  email: false
+services:
+- docker
+language: python
+python:
+- 3.6
+git:
+  depth: false
+script:
+- make build
+- make push
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: bash .travis-deploy.sh
+  on:
+    branch: master
+env:
+  global:
+  - secure: j0pwbm0Sm8zcWUFClyctNb8UhKVgBzU3gBaTCF1oWa7/9OpUfbL6Hyua8/ERaAhST+IBWb6PeRffD4WkY18FatDkxmyk3DcwsqSW55Om69Kipj+Y8KTqAkdTojZO0/tvq3fFgaqAuLc3cchONIZTl8EZPQDWzt+gVvwZanZJOIu/phWryKgc3tovA2Wwjkf3rtNuMKusbCAlC6IXOOlxQnDiCtjD6Itv4/BhoczJmxzxRHvgY47bTGcot9kTc7dmvH/qnD6E2bqT2cGSjk4vEnImwUwFHe36d5/3qdMgTPepvgLzsWVuM8FKuVoik8KveKeShS39f1pRPYT2rXt9Tu/1my23F+I9urSJW4a+MT0p4FtKCUPwi+fXqE3wX7RIEzWtEeJT4aI3cw8qrFGrGpNIKi+Vd97KphFdVURsHnR7nuPUuvcfdqrSE4YyUR7Xm+hzqnSd2AilDCNtHX+u9MVqmSogCUBb8dDwafBrZuwNJLSfKyhfHz4Q4F1us07PbNcXI7oEbabA/DAPhMXPMvEFJEKNrN1Hru4qrWCHXKvs7oR1LLps7NtWagfAnPqIN0g7b/sm+me1yJKv2SHC5VLKlv/rfNe0WeD8lZ/dIgcGSSYvRkJoQbQ1eEVHkai+E+u0kxySPRBVR1VaGnRWertosFLi2kgkN0R1ACgVrys=
