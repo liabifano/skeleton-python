@@ -10,6 +10,10 @@ setup(name='skeleton',
       install_requires=[
           'numpy==1.15.1',
           'pytest==3.7.4',
+          'rope==0.11.0',
+          'autopep8==1.4',
+          'yapf==0.23.0',
+          'flake8==3.5.0',
       ],
       include_package_data=True,
       zip_safe=False)
